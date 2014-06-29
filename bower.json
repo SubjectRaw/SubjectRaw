@@ -14,3 +14,19 @@
   "moduleType": [
     "amd"
   ],
+  "keywords": [
+    "semantic",
+    "web",
+    "collaborative",
+    "productivity"
+  ],
+  "license": "MIT",
+  "homepage": "http://subject.ro",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
