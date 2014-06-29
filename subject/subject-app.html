@@ -1,0 +1,118 @@
+<link rel="import" href="../bower_components/core-drawer-panel/core-drawer-panel.html">
+<link rel="import" href="../bower_components/core-menu/core-submenu.html">
+<link rel="import" href="../bower_components/core-item/core-item.html">
+<link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../bower_components/core-toolbar/core-toolbar.html">
+<link rel="import" href="../bower_components/core-scroll-header-panel/core-scroll-header-panel.html">
+
+<polymer-element name="subject-app">
+
+  <template>
+    <style>    
+      :host {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        top: 0px;
+        left: 0px;
+      }
+      #core_drawer_panel {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+      }
+      #section {
+        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+        opacity: 0.6;
+        background-color: rgb(250, 250, 250);
+      }
+      #section1 {
+        height: 100%;
+        box-sizing: border-box;
+        background-color: rgb(221, 221, 221);
+      }
+      #core_menu {
+        font-size: 16px;
+      }
+      #core_scroll_header_panel {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
+      #core_toolbar {
+        color: rgb(241, 241, 241);
+        fill: rgb(241, 241, 241);
+        background-color: rgb(0, 125, 214);
+      }
+      #section2 {
+        height: 5000px;
+        background: linear-gradient(rgb(214, 227, 231), rgb(173, 216, 230)) rgb(0, 44, 140);
+      }
+      #div1 {
+        opacity: 1;
+      }
+    </style>
+    <core-drawer-panel id="core_drawer_panel">
+      <section id="section" drawer>
+        <core-menu selected="3" selectedindex="3" id="core_menu">
+          <core-submenu selected="3" label="Menu" icon="settings" id="core_submenu">
+            <core-item label="Login" icon="account-circle" id="core_item" horizontal center layout></core-item>
+            <core-item label="Info" icon="info" id="core_item9" horizontal center layout></core-item>
+            <core-item label="Language: English" icon="check-circle" id="core_item10" horizontal center layout></core-item>
+            <core-submenu active label="More Options" icon="settings" id="core_submenu6">
+              <core-item label="Topic 1" id="core_item4" horizontal center layout></core-item>
+              <core-item label="Topic 2" id="core_item7" horizontal center layout></core-item>
+            </core-submenu>
+          </core-submenu>
+          <core-submenu label="Favorites: Login first" icon="favorite" id="core_submenu3">
+            <core-submenu label="Subjects" icon="cloud" id="core_submenu4">
+              <core-item label="Topic 1" id="core_item11" horizontal center layout></core-item>
+              <core-item label="Topic 2" id="core_item12" horizontal center layout></core-item>
+            </core-submenu>
+            <core-submenu label="Pointers" icon="keep" id="core_submenu5">
+              <core-item label="Topic 1" id="core_item13" horizontal center layout></core-item>
+              <core-item label="Topic 2" id="core_item14" horizontal center layout></core-item>
+            </core-submenu>
+          </core-submenu>
+          <core-item label="Subject" icon="cloud" id="core_item1" horizontal center layout></core-item>
+          <core-submenu active label="Document" icon="drive-file" id="core_submenu1">
+            <core-item label="Ch 1" id="core_item2" horizontal center layout></core-item>
+            <core-item label="Ch 2" id="core_item3" horizontal center layout></core-item>
+            <core-submenu label="Ch 3" id="core_submenu2">
+              <core-item label="Ch 3.1" id="core_item5" horizontal center layout></core-item>
+              <core-item label="Ch 3.2" id="core_item6" horizontal center layout></core-item>
+            </core-submenu>
+          </core-submenu>
+        </core-menu>
+      </section>
+      <section id="section1" main>
+        <core-scroll-header-panel condenses keepcondensedheader headerheight="64" condensedheaderheight="64" id="core_scroll_header_panel">
+          <section id="section2" content></section>
+          <core-toolbar id="core_toolbar">
+            <core-icon-button icon="arrow-back" id="core_icon_button"></core-icon-button>
+            <div id="div" flex></div>
+            <core-icon-button icon="search" id="core_icon_button1"></core-icon-button>
+            <core-icon-button icon="more-vert" id="core_icon_button2"></core-icon-button>
+            <div id="div1" class="bottom indent">Subject > term1 > term2 > Document > Subject > term1 > term2 > Document > Subject > term1 > term2 > Document Subject > term1 > term2 > Document Subject > term1 > term2 > Document </div>
+          </core-toolbar>
+        </core-scroll-header-panel>
+      </section>
+    </core-drawer-panel>
+  </template>
+
+  <script>
+
+    Polymer('subject-app', {
+      
+    });
+
+  </script>
+
+</polymer-element>

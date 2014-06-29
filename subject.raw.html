@@ -1,0 +1,412 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <title>Subject.Raw.</title>
+  
+  <script src="bower_components/platform/platform.js"></script>
+  
+  <link rel="import" href="bower_components/core-splitter/core-splitter.html">
+  <link rel="import" href="bower_components/core-menu/core-submenu.html">
+  <link rel="import" href="subject/ontology-app.html">
+<link rel="import" href="bower_components/core-item/core-item.html">
+<link rel="import" href="bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="bower_components/paper-fab/paper-fab.html">
+<script src="libs/marked.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.1.01/ace.js"></script>
+
+
+  
+  <style>
+  
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      font-family: Helvetica;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+    }
+
+    #paper_fab {
+        left: 45%;
+        top: 10%;
+        position: absolute;
+        width: 10%;
+        height: 100px;
+      }
+    
+    .container {
+      height: 100%;
+      width: 100%;
+      
+
+    }
+
+
+    
+    .container div {
+      
+    }
+
+    #content {
+      overflow: scroll;
+      margin: 10px;
+        width: 100%;
+        overflow: hidden;
+        
+    }
+
+    #ontology {
+      width: 100%;
+
+      height: 100%;
+
+    }
+
+    #docu {
+      overflow: hidden;
+    }
+
+    #frame {
+      width: 100%;
+
+      height: 520px;
+      overflow: hidden;
+
+    }
+    
+    #box1, #box3, #box5, #box6 {
+      width: 250px;
+      overflow: scroll;
+    }
+    
+    #box2, #box4 {
+      height: 60px;
+    }
+
+    #horiz-closed{
+      width: 0px;
+      overflow: scroll;
+    }
+
+    #vert-closed{
+      height: 0px;
+    }
+
+    #core_menu {
+        font-size: 16px;
+        left: 0px;
+        top: 0px;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+
+    #editor { 
+        position: relative;
+
+        top:0px;
+        overflow: scroll;
+        height:690px;
+        width: 530px;
+    }
+    
+  </style>
+  
+</head>
+<body unresolved>
+
+  
+  <div class="container" horizontal layout>
+    <div id="box3">
+      <core-menu theme="core-light-theme">
+        <core-submenu selected="3" label="Menu" icon="settings" id="core_submenu">
+            <core-item label="Login" icon="account-circle" id="core_item" horizontal center layout></core-item>
+            <core-item label="Info" icon="info" id="core_item9" horizontal center layout></core-item>
+            <core-item label="Language: English" icon="check-circle" id="core_item10" horizontal center layout></core-item>
+            <core-submenu active label="More Options" icon="settings" id="core_submenu6">
+              <core-item label="Topic 1" id="core_item4" horizontal center layout></core-item>
+              <core-item label="Topic 2" id="core_item7" horizontal center layout></core-item>
+            </core-submenu>
+          </core-submenu>
+          <core-submenu label="Favorites: Login first" icon="favorite" id="core_submenu3">
+            <core-submenu label="Subjects" icon="cloud" id="core_submenu4">
+              <core-item label="Topic 1" id="core_item11" horizontal center layout></core-item>
+              <core-item label="Topic 2" id="core_item12" horizontal center layout></core-item>
+            </core-submenu>
+            <core-submenu label="Pointers" icon="keep" id="core_submenu5">
+              <core-item label="Topic 1" id="core_item13" horizontal center layout></core-item>
+              <core-item label="Topic 2" id="core_item14" horizontal center layout></core-item>
+            </core-submenu>
+          </core-submenu>
+          <core-item label="Subject" icon="cloud" onclick='parent.$("#docu").html("<iframe id=\"frame\" src=\"subject2.html\" frameborder=\"0\" scroll=\"no\"></iframe>")' id="core_item1" horizontal center layout></core-item>
+          <core-submenu active label="Document" icon="drive-file" id="doc_summary">
+            
+          </core-submenu>
+      </core-menu>
+
+
+      
+
+    </div>
+    <core-splitter id="left" direction="left"></core-splitter>
+    
+    <div flex vertical layout  id="docu">
+      <div id="box4">Subject > term1 > term2 > Document > Subject > term1 > term2 > Document > Subject > term1 > term2 > Document Subject > term1 > term2 > Document Subject > term1 > term2 > Document</div>
+      <core-splitter direction="up"></core-splitter>
+      
+      <div flex horizontal layout>
+        <div id="horiz-closed" >
+          <div id="editor"  onchange="refresh()"  onkeyup="refresh()">https://www.google.com
+
+# H1
+## H2
+### H3
+#### H4
+##### H5
+###### H6
+
+Alternatively, for H1 and H2, an __underline-ish__ style:
+
+Alt-H1
+======
+
+Alt-H2
+------
+
+Emphasis, aka italics, with *asterisks* or _underscores_.
+
+Strong emphasis, aka bold, with **asterisks** or __underscores__.
+
+Combined emphasis with **asterisks and _underscores_**.
+
+Strikethrough uses two tildes. ~~Scratch this.~~
+
+1. First ordered list item
+2. Another item
+* Unordered sub-list. 
+1. Actual numbers don't matter, just that it's a number
+1. Ordered sub-list
+4. And another item.
+
+
+   You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
+
+   To have a line break without a paragraph, you will need to use two trailing spaces.  
+   Note that this line is separate, but within the same paragraph.  
+   (This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
+
+* Unordered list can use asterisks
+- Or minuses
++ Or pluses
+
+https://www.google.com
+
+[I'm an inline-style link](https://www.google.com)
+
+[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
+
+[I'm a reference-style link][Arbitrary case-insensitive reference text]
+
+[I'm a relative reference to a repository file](../blob/master/LICENSE)
+
+[You can use numbers for reference-style link definitions][1]
+
+Or leave it empty and use the [link text itself]
+
+Some text to show that the reference links can follow later.
+
+
+Here's our logo (hover to see the title text):
+
+![My image link text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png)
+
+Inline-style: 
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+
+Reference-style: 
+![alt text][logo]
+
+
+Inline `code` has `back-ticks around` it.
+
+
+```javascript
+ var s = "JavaScript syntax highlighting";
+ alert(s);
+
+ s = "Python syntax highlighting"
+ print s
+
+
+ No language indicated, so no syntax highlighting. 
+ But let's throw in a tag.
+```
+
+Colons can be used to align columns.
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
+The outer pipes (|) are optional, and you don't need to make the raw Markdown line up prettily. You can also use inline Markdown.
+
+Markdown | Less | Pretty
+--- | --- | ---
+*Still* | `renders` | **nicely**
+1 | 2 | 3
+
+
+> Blockquotes are very handy in email to emulate reply text.
+> This line is part of the same quote.
+
+Quote break.
+
+> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote. 
+
+
+Three or more...
+
+---
+
+Hyphens
+
+***
+
+Asterisks
+
+___
+
+Underscores
+
+
+Here's a line for us to start with.
+
+This line is separated from the one above by two newlines, so it will be a *separate paragraph*.
+
+This line is also a separate paragraph, but...
+This line is only separated by a single newline, so it's a separate line in the *same paragraph*.
+
+
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/HNlOXQqgomI/0.jpg)](http://www.youtube.com/watch?v=HNlOXQqgomI)
+
+
+<dl>
+  <dt>Definition list</dt>
+  <dd>Is something people use sometimes.</dd>
+
+  <dt>Markdown in HTML</dt>
+  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
+</dl>
+
+
+          </div>
+        </div>
+        <core-splitter></core-splitter>
+        <div id="content">
+          content
+
+        </div>
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  
+  
+ <script>
+
+function goto(anchor){
+  element_to_scroll_to = $('a[name='+anchor+']')
+  element_to_scroll_to[0].scrollIntoView();
+}
+
+
+ function refresh() {
+  var val = editor.getValue();
+  var out = marked(val , {
+    xhtml: true, 
+    //gfm: true,
+
+  });
+
+  function subject() {
+    var add = '<iframe id="frame" src="subject.html" frameborder="0" scroll="no"></iframe>';
+    $("#docu").css("visibility","hidden")
+    $("#left").append(add)
+  }
+
+  String.repeat = function(string, num){ return new Array(parseInt(num) + 1).join(string); };
+
+  var renderer = new marked.Renderer();
+  var content =""
+
+renderer.heading = function (text, level) {
+  var escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+  content = content+'<core-item label="'+String.repeat("&nbsp;",level)+text+'" id="'+escapedText+'" onclick="goto(\''+escapedText+'\')" horizontal center layout></core-item>';
+
+  return '<h' + level + '><a name="' +
+                escapedText +
+                 '" class="anchor" href="#' +
+                 escapedText +
+                 '"><span class="header-link"></span></a>' +
+                  text + '</h' + level + '>';
+}
+
+
+
+
+
+var out = marked(val , {
+    xhtml: true, 
+    renderer: renderer
+    //gfm: true,
+
+  });
+
+
+//console.log(marked('# heading+', { renderer: renderer }));
+  //var out2 = marked2svg(val );
+  //out2 = out2.replace(/\n/g, " ")
+  //out2 = out2.replace(/\r/g, " ")
+  //console.log(out);
+  parent.document.getElementById("content").innerHTML =out;
+  parent.document.getElementById("doc_summary").innerHTML =content;
+
+}
+
+ var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/xcode");
+    editor.getSession().setMode("ace/mode/markdown");
+    editor.getSession().setUseWrapMode(true);
+    
+
+      // Wait for 'polymer-ready'. Ensures the element is upgraded.
+      
+      window.addEventListener('polymer-ready', function(e) {
+        refresh()
+/*
+        var gh = new Octokit({
+  username: "USER_NAME",
+  password: "PASSWORD"
+});
+          console.log(gh);
+*/
+          // readonly
+        
+      });
+
+    </script>
+  
+</body>
+</html>

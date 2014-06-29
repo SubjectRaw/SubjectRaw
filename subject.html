@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <title>Subject.Raw.</title>
+  
+  <script src="bower_components/platform/platform.js"></script>
+
+  <link rel="import" href="subject/ontology-app.html">
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="bower_components/octokit/octokit.js"></script>
+
+
+<body unresolved style="overflow: hidden;">
+
+    <ontology-app></ontology-app>
+
+
+<script type="text/javascript">
+      window.addEventListener('polymer-ready', function(e) {
+        //refresh()
+
+        var gh = new Octokit({
+  username: "USER_NAME",
+  password: "PASSWORD"
+});
+          console.log(gh);
+
+          // readonly
+        
+      });
+
+    </script>
+  
+</body>
+</html>

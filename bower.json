@@ -1,0 +1,16 @@
+{
+  "name": "subject",
+  "version": "0.0.1",
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.3.3",
+    "core-elements": "Polymer/core-elements#~0.3.3",
+    "octokit": "~0.10.2"
+  },
+  "authors": [
+    "Christian Tzurcanu <christian.tzurcanu@gmail.com>"
+  ],
+  "description": "App for collaboration on exact subjects.",
+  "main": "textual.html",
+  "moduleType": [
+    "amd"
+  ],
