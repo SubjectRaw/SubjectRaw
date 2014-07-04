@@ -4,18 +4,15 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
   <title>Subject.Raw.</title>
-  
-  <script src="bower_components/platform/platform.js"></script>
-  
-  <link rel="import" href="bower_components/core-splitter/core-splitter.html">
-  <link rel="import" href="bower_components/core-menu/core-submenu.html">
-  <link rel="import" href="subject/ontology-app.html">
-<link rel="import" href="bower_components/core-item/core-item.html">
-<link rel="import" href="bower_components/core-icon-button/core-icon-button.html">
-<link rel="import" href="bower_components/paper-fab/paper-fab.html">
+  <link href="libs/jquery.splitter.css" rel="stylesheet"/>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="libs/jquery.splitter-0.14.0.js"></script>
+
 <script src="libs/marked.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.1.01/ace.js"></script>
+
+<script src="http://rawgithub.com/ajaxorg/ace-builds/master/src/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://rawgithub.com/ajaxorg/ace-builds/master/src/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+
 
 
   
@@ -32,137 +29,53 @@
 
     }
 
-    #paper_fab {
-        left: 45%;
-        top: 10%;
-        position: absolute;
-        width: 10%;
-        height: 100px;
-      }
-    
-    .container {
-      height: 100%;
-      width: 100%;
-      
-
-    }
-
-
-    
-    .container div {
-      
-    }
-
-    #content {
-      overflow: scroll;
-      margin: 10px;
-        width: 100%;
-        
-        
-    }
-
-    #ontology {
-      width: 100%;
-
-      height: 100%;
-
-    }
-
-    #docu {
-
-    }
-
     #frame {
-      width: 100%;
-
-      height: 520px;
-      overflow: hidden;
-
-    }
-    
-    #box1, #box3, #box5, #box6 {
-      width: 250px;
-      overflow: scroll;
-    }
-    
-    #box2, #box4 {
-      height: 60px;
-    }
-
-    #horiz-closed{
-      width: 0px;
-      overflow: scroll;
-    }
-
-    #vert-closed{
-      height: 0px;
-    }
-
-    #core_menu {
-        font-size: 16px;
-        left: 0px;
-        top: 0px;
-        position: absolute;
-        width: 100%;
+    	width: 100%;
         height: 100%;
+        overflow: hidden;
     }
-
 
     #editor { 
         position: relative;
-
+        width: 100%;
+        height: 100%;
         top:0px;
         overflow: scroll;
-        height:690px;
-        width: 530px;
+
     }
     
   </style>
   
 </head>
-<body unresolved>
+<body>
 
   
-  <div class="container" horizontal layout>
+  <div id="container" >
     <div id="box3">
-      <core-menu theme="core-light-theme">
-        <core-submenu selected="3" label="Menu" icon="settings" id="core_submenu">
-            <core-item label="Login" icon="account-circle" id="core_item" horizontal center layout></core-item>
-            <core-item label="Info" icon="info" id="core_item9" horizontal center layout></core-item>
-            <core-item label="Language: English" icon="check-circle" id="core_item10" horizontal center layout></core-item>
-            <core-submenu active label="More Options" icon="settings" id="core_submenu6">
-              <core-item label="Topic 1" id="core_item4" horizontal center layout></core-item>
-              <core-item label="Topic 2" id="core_item7" horizontal center layout></core-item>
-            </core-submenu>
-          </core-submenu>
-          <core-submenu label="Favorites: Login first" icon="favorite" id="core_submenu3">
-            <core-submenu label="Subjects" icon="cloud" id="core_submenu4">
-              <core-item label="Topic 1" id="core_item11" horizontal center layout></core-item>
-              <core-item label="Topic 2" id="core_item12" horizontal center layout></core-item>
-            </core-submenu>
-            <core-submenu label="Pointers" icon="keep" id="core_submenu5">
-              <core-item label="Topic 1" id="core_item13" horizontal center layout></core-item>
-              <core-item label="Topic 2" id="core_item14" horizontal center layout></core-item>
-            </core-submenu>
-          </core-submenu>
-          <core-item label="Subject" icon="cloud" onclick='parent.$("#docu").html("<iframe id=\"frame\" src=\"subject.html\" frameborder=\"0\" scroll=\"no\"></iframe>")' id="core_item1" horizontal center layout></core-item>
-          <core-submenu active label="Document" icon="drive-file" id="doc_summary">
-            
-          </core-submenu>
-      </core-menu>
+      <p><strong>Login</strong><br/>
+      <strong>Info</strong><br/>
+      <strong>Options</strong><br/>
+      <span onclick='parent.$("#docu").html("<iframe id=\"frame\" src=\"subject.html\" frameborder=\"0\" scroll=\"no\"></iframe>");' ><strong>Subject</strong></span><br/><br/>
+      <strong>Document</strong>
 
 
-      
+	<div id="doc_summary"></div>
+      </p>
 
     </div>
-    <core-splitter id="left" direction="left"></core-splitter>
+
+
+
+
     
-    <div flex vertical layout  id="docu">
-      <div id="box4">Subject > term1 > term2 > Document > Subject > term1 > term2 > Document > Subject > term1 > term2 > Document Subject > term1 > term2 > Document Subject > term1 > term2 > Document</div>
-      <core-splitter direction="up"></core-splitter>
+    <div  id="docu">
+      <div id="title">Subject > term1 > term2 > Document > Subject > term1 > term2 > Document > Subject > term1 > term2 > Document Subject > term1 > term2 > Document Subject > term1 > term2 > Document</div>
+
+
+
       
-      <div flex horizontal layout>
-        <div id="horiz-closed" >
+      <div id="cont" >
+        <div >
           <div id="editor"  onchange="refresh()"  onkeyup="refresh()">https://www.google.com
 
 # H1
@@ -310,9 +223,12 @@ This line is only separated by a single newline, so it's a separate line in the 
 
           </div>
         </div>
-        <core-splitter></core-splitter>
+
+
+
+
         <div id="content">
-          content
+         
 
         </div>
         
@@ -340,6 +256,15 @@ function goto(anchor){
 
   });
 
+  function toTitleCase(str){
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+  }
+
+  function seeSubject(){
+  	parent.$("#docu").html("<iframe id=\"frame\" src=\"subject.html\" frameborder=\"0\" scroll=\"no\"></iframe>");
+  	$("#docu").css({width:"100%", height: "100%"})
+  }
+
   function subject() {
     var add = '<iframe id="frame" src="subject.html" frameborder="0" scroll="no"></iframe>';
     $("#docu").css("visibility","hidden")
@@ -353,7 +278,7 @@ function goto(anchor){
 
 renderer.heading = function (text, level) {
   var escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
-  content = content+'<core-item label="'+String.repeat("&nbsp;",level)+text+'" id="'+escapedText+'" onclick="goto(\''+escapedText+'\')" horizontal center layout></core-item>';
+  content = content+' <span id="'+escapedText+'" onclick="goto(\''+escapedText+'\')">'+String.repeat("&nbsp;",level)+text+'</span><br/>';
 
   return '<h' + level + '><a name="' +
                 escapedText +
@@ -386,25 +311,42 @@ var out = marked(val , {
 }
 
  var editor = ace.edit("editor");
+    var langTools = ace.require("ace/ext/language_tools");
     editor.setTheme("ace/theme/xcode");
     editor.getSession().setMode("ace/mode/markdown");
     editor.getSession().setUseWrapMode(true);
+    editor.setOptions({
+        enableBasicAutocompletion: true,
+        //enableSnippets: true,
+        enableLiveAutocompletion: false
+    });
+
+    var rhymeCompleter = {
+        getCompletions: function(editor, session, pos, prefix, callback) {
+            if (prefix.length < 3) { callback(null, []); return }
+            $.getJSON(
+                "http://rhymebrain.com/talk?function=getRhymes&word=" + prefix,
+                function(wordList) {
+                    // wordList like [{"word":"flow","freq":24,"score":300,"flags":"bc","syllables":"1"}]
+                    // √
+                    callback(null, wordList.map(function(ea) {
+                        return {name: ea.word, value: ea.word, score: ea.score, meta: "rhyme"}
+                    }));
+                })
+        }
+    }
+    langTools.addCompleter(rhymeCompleter);
     
 
-      // Wait for 'polymer-ready'. Ensures the element is upgraded.
-      
-      window.addEventListener('polymer-ready', function(e) {
-        refresh()
-/*
-        var gh = new Octokit({
-  username: "USER_NAME",
-  password: "PASSWORD"
+jQuery(function($) {
+   $('#container').width("100%").height("100%").split({orientation:'vertical', limit:3, position:'12%'});
+   $('#docu').split({orientation:'horizontal', limit:3, position: "8%"});
+   $('#cont').split({orientation:'vertical', limit:1, position: "40%"});
+
+
+refresh();
+
 });
-          console.log(gh);
-*/
-          // readonly
-        
-      });
 
     </script>
   

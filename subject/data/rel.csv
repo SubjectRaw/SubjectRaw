@@ -1,4 +1,4 @@
-id,item,id,relation,subject
+id,item,item_id,relation,subject
 1001,subject,1011,1,101
 1002,subject,1012,1,101
 1003,subject,1013,1,101

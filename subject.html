@@ -4,21 +4,28 @@
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
   <title>Subject.Raw.</title>
   
-  <script src="bower_components/platform/platform.js"></script>
-
-  <link rel="import" href="subject/ontology-app.html">
 
   <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="subject/jquery-csv/jquery.csv-0.71.min.js"></script>
   <script src="bower_components/octokit/octokit.js"></script>
 
+<style type="text/css">
+  html, body {
+    font-family: Helvetica;
+    text-align: center;
+  }
 
-<body unresolved style="overflow: hidden;">
+</style>
 
-    <ontology-app></ontology-app>
+<body>
+
+ <div id="all"></div>
 
 
 <script type="text/javascript">
-      window.addEventListener('polymer-ready', function(e) {
+var subject, rel, image;
+
+$( document ).ready(function() {
         //refresh()
 
         var gh = new Octokit({
@@ -27,9 +34,182 @@
 });
           console.log(gh);
 
+
+
+  var jqxhr = $.ajax( "subject/data/subject.csv" )
+  .done(function(data) {
+    subject = $.csv.toObjects(data)
+    //console.info(subject)
+
+    $.ajax( "subject/data/rel.csv" )
+    .done(function(data1) {
+      rel = $.csv.toObjects(data1)
+      //console.info(rel)
+      $.ajax( "subject/data/image.csv" )
+      .done(function(data2) {
+        image = $.csv.toObjects(data2)
+        //while (rel == undefined) {}
+        //console.info(rel)
+        process("1011")
+
+      })
+      .fail(function() {
+        console.info( "ajax image error" );
+      })
+      .always(function() {
+        console.info( "ajax image complete" );
+      });
+      
+
+    })
+    .fail(function() {
+      console.info( "ajax rel error" );
+    })
+    .always(function() {
+      console.info( "ajax rel complete" );
+    });
+
+
+  })
+  .fail(function() {
+    console.info( "ajax subject error" );
+  })
+  .always(function() {
+    console.info( "ajax subject complete" );
+  });
+
+  
+
+
+
+
+          
+
           // readonly
         
-      });
+});
+
+function process(id){
+  //var id = "1011"
+  var node = selectFrom(subject, "term_id", [id])
+  console.info(node)
+  var k_rels = selectFrom(rel, "subject", [id])
+  k_rels1 = reduce(k_rels,"item_id")
+  var children = selectFrom(subject, "term_id", k_rels1)
+  var p_rels =  selectFrom(rel, "item_id", [id])
+  p_rels1 = reduce(p_rels,"subject")
+  var parents = selectFrom(subject, "term_id", p_rels1)
+  if (parents[0]) {
+    var id_p = parents[0].term_id
+    var b_rels = selectFrom(rel, "subject", [id_p])
+    b_rels1 = reduce(b_rels,"item_id")
+    var brothers = selectFrom(subject, "term_id", b_rels1)
+    
+    getImages(brothers)
+    getParents(parents)
+    getImages(parents)
+  }
+
+  
+  
+  
+  getImages(children)
+  getImages(node)
+
+  
+  
+  console.info(parents)
+  //console.info(parents)
+  //console.info(brothers)
+
+$("#all").html("")
+
+renderChildren(children)
+renderNode(node)
+renderBrothers(brothers)
+renderParents(parents)
+
+}
+
+function getParents(object){
+  var p_rels =  selectFrom(rel, "item_id", [object[0].term_id])
+  p_rels1 = reduce(p_rels,"subject")
+  var parents = selectFrom(subject, "term_id", p_rels1)
+  if (parents[0]) {
+    var id_p = parents[0].term_id
+    object.push(parents[0])
+  }
+}
+
+function renderChildren(object){
+  spot = [ 
+    {x: 42, y: 19},
+    {x: 42, y: 66},
+    {x: 19, y: 42},
+    {x: 65, y: 42},
+    {x: 25, y: 25},
+    {x: 59, y: 25},
+    {x: 25, y: 59},
+    {x: 59, y: 59},
+  ]
+  for(item in object){
+    renderCard("kid",object[item].term_id,{w:15,h:15,x:spot[item].x,y:spot[item].y},object[item].term,"") // object[item].image.url
+  }
+}
+
+function renderBrothers(object){
+  for(item in object){
+    renderCard("bro",object[item].term_id,{w:11,h:11,x:88,y:1+item*12},object[item].term,"") // object[item].image.url
+  }
+}
+
+function renderParents(object){
+  for(item in object){
+    renderCard("bro",object[item].term_id,{w:11,h:11,x:1+"%",y:87-item*12},object[item].term,"") // object[item].image.url
+  }
+}
+
+function getImages(object){
+  var images =[],item
+
+  for (item in object){
+    images = selectFrom(image, "id", [object[item].image]) 
+    
+    object[item].image = images[0]
+
+  }
+}
+
+function reduce(object,field){
+  var out = [],item;
+  for (item in object){
+    out.push(object[item][field])
+  }
+  return out;
+}
+
+function selectFrom(object,field,values){
+  var out = [],item;
+  for (item in object){
+    if ( values.indexOf(object[item][field]) >= 0 ) out.push(object[item])
+  }
+  return out;
+}
+
+renderNode = function(object){
+  console.info(object)
+  renderCard("node",object[0].term_id,{w:25,h:25,x:37,y:37},object[0].term,"")
+}
+
+renderCard = function(type,id,dims,text,url){
+  var out = "",img = '',r=6;
+  if (url == undefined || url == "") url= "none.svg"
+  img ='<img src="subject/data/image/'+url+'" width="'+dims.h*3+'" height="'+dims.h*3+'"  style="position:relative;border:0px;" />'
+  img = '<svg width="'+dims.h*3+'" height="'+dims.h*3+'" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><rect ry="100" rx="100" id="svg_21" height="1024" width="1024" y="0" x="0" fill="#bfbfbf"/><text transform="matrix(4,0,0,4,-850,-415.6) " font-weight="bold" xml:space="preserve" text-anchor="middle" font-family="Helvetica" font-size="216" id="svg_2" y="300" x="330" fill="#7f7f7f">?</text></svg>';
+  out = out+'<style>#id'+type+id+'{position: absolute;width:'+dims.w+'%;height:'+dims.h+'%;border-top-left-radius:'+r+'px;border-top-right-radius:'+r+'px;border-bottom-right-radius:'+r+'px;border-bottom-left-radius:'+r+'px;box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;left:'+dims.x+'%;top:'+dims.y+'%;background-color:#fff}</style><div onclick="process(\''+id+'\')" id="id'+type+id+'">'+img+'<div style="font-size:'+dims.h+'px;">'+text+'</div></div>';
+  $("#all").append(out)
+
+}
 
     </script>
   
