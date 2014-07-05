@@ -66,9 +66,12 @@
   </style>
 
 <script type="text/javascript">
-var timepast=false;
-  function chkFrame(fr) {
+var timepast=false, try_url="";
 
+String.repeat = function(string, num){ return new Array(parseInt(num) + 1).join(string); }; 
+
+  function chkFrame(fr) {
+    if (try_url == "") return;
         if(timepast) {
             console.log("It's PROBABLY OK");
             timepast=false;
@@ -76,9 +79,7 @@ var timepast=false;
         else {
             console.log("It's PROBABLY NOT OK");
             var win1 = window.open(try_url,"subj_pop","height=500, width=1100, location=no, scrollbars=yes,menubars=yes,toolbars=no,resizable=yes,left=100,top=100");
-            win1.onclose(function(){
-              alert("closed")
-            })
+            
             timepast=false;
         }
 
@@ -384,7 +385,7 @@ function loadDoc(){
 
   
 
-  String.repeat = function(string, num){ return new Array(parseInt(num) + 1).join(string); };
+  
 
   var renderer = new marked.Renderer();
   var content =""
@@ -490,7 +491,7 @@ var out = marked(val , {
               }
             }
             callback(null, out.map(function(ea) {
-              return {name: ea+" ceva", value: ea, score: 1, meta: "subject"}
+              return {name: ea, value: ea, score: 1, meta: "subject"}
             }));
         }
     }

@@ -3,7 +3,7 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-  <title>Subject.Raw.</title>
+  <title>MD.viewer.</title>
   <link href="libs/jquery.splitter.css" rel="stylesheet"/>
   <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="libs/jquery.splitter-0.14.0.js"></script>
@@ -26,16 +26,13 @@
       -webkit-user-select: none;
       -moz-user-select: none;
       -webkit-tap-highlight-color: rgba(0,0,0,0);
+      background-color: #fff; 
 
     }
 
-    #frame {
-    	width: 100%;
-        height: 100%;
-        overflow: hidden;
-    }
 
-    #editor { 
+
+    #editor1 { 
         position: relative;
         width: 100%;
         height: 100%;
@@ -44,50 +41,13 @@
 
     }
 
-    #modal, #shade {
-      display: none;
-    }
 
-    #pop_url {
-      z-index: 2099;
-      position: relative;
-        width: 100%;
-        height: 100%;
-    }
 
-    
-    #shade { position: fixed; z-index: 2100; top: 0; left: 0; width: 100%; height: 100%; }
-    
-    #modal { position: fixed; z-index: 2101; top: 15%; left: 15%; width: 70%; height: 70%;}
-    
-    #shade { background: grey; opacity: 0.9; filter: alpha(opacity=80); }
         
     
   </style>
 
 <script type="text/javascript">
-var timepast=false;
-  function chkFrame(fr) {
-
-        if(timepast) {
-            console.log("It's PROBABLY OK");
-            timepast=false;
-        }
-        else {
-            console.log("It's PROBABLY NOT OK");
-            var win1 = window.open(try_url,"subj_pop","height=500, width=1100, location=no, scrollbars=yes,menubars=yes,toolbars=no,resizable=yes,left=100,top=100");
-            win1.onclose(function(){
-              alert("closed")
-            })
-            timepast=false;
-        }
-
-    
-
-
-
-
-  }
 
 </script>
   
@@ -96,9 +56,9 @@ var timepast=false;
 
 
       
-      <div id="cont" >
+      <div id="cont1" >
         <div >
-          <div id="editor"  onchange="refresh()"  onkeyup="refresh()">
+          <div id="editor1"  onchange="refresh()"  onkeyup="refresh()">
 
           </div>
         </div>
@@ -106,7 +66,7 @@ var timepast=false;
 
 
 
-        <div id="content">
+        <div id="content1">
          
 
         </div>
@@ -196,27 +156,6 @@ renderer.heading = function (text, level) {
                   text + '</h' + level + '>';
 }
 
-renderer.link = function(href, title, text) {
-  if (this.options.sanitize) {
-    try {
-      var prot = decodeURIComponent(unescape(href))
-        .replace(/[^\w:]/g, '')
-        .toLowerCase();
-    } catch (e) {
-      return '';
-    }
-    if (prot.indexOf('javascript:') === 0) {
-      return '';
-    }
-  }
-  var out = '<a href="#" onclick="parent.showModal(\'' + href + '\');" ';
-  if (title) {
-    out += ' title="' + title + '"';
-  }
-  out += '>' + text + '</a>';
-  return out;
-};
-
 
 
 
@@ -228,71 +167,30 @@ var out = marked(val , {
 
   });
 
+  document.getElementById("content1").innerHTML =out;
 
-//console.log(marked('# heading+', { renderer: renderer }));
-  //var out2 = marked2svg(val );
-  //out2 = out2.replace(/\n/g, " ")
-  //out2 = out2.replace(/\r/g, " ")
-  //console.log(out);
-  parent.document.getElementById("content").innerHTML =out;
-  //parent.document.getElementById("doc_summary").innerHTML =content;
 
 }
 
- var editor = ace.edit("editor");
-    var langTools = ace.require("ace/ext/language_tools");
+ var editor = ace.edit("editor1");
+
     editor.setTheme("ace/theme/xcode");
     editor.getSession().setMode("ace/mode/markdown");
     editor.getSession().setUseWrapMode(true);
-    editor.setOptions({
-        enableBasicAutocompletion: true,
-        //enableSnippets: true,
-        //enableLiveAutocompletion: true
-    });
 
-    var subjPointer = "subject/en/subject.md";
+
     var choices = [], try_url="";
 
-    $.ajax(subjPointer)
-      .done(function(data) {
-        var renderer2 = new marked.Renderer();
-        
-        renderer2.heading = function (text, level) {
-          //var escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
-          //content = content+' <span id="'+escapedText+'" onclick="goto(\''+escapedText+'\')">'+String.repeat("&nbsp;",level)+text+'</span><br/>';
-          choices.push(String.repeat("",level)+text)
-        }
-        var out2 = marked(data , {
-          xhtml: true, 
-          renderer: renderer2
-        });
-      })
+    
 
 
 
 
-
-    var subjectCompleter = {
-        getCompletions: function(editor, session, pos, prefix, callback) {
-            if (prefix.length < 3) { callback(null, []); return }
-            re = new RegExp(prefix,"i");
-            var out = [];
-            for (item in choices){
-              if (choices[item].search(re) > -1) {
-                out.push(choices[item])
-              }
-            }
-            callback(null, out.map(function(ea) {
-              return {name: ea+" ceva", value: ea, score: 1, meta: "subject"}
-            }));
-        }
-    }
-    langTools.addCompleter( subjectCompleter);
     
 
 jQuery(function($) {
   
-   $('#cont').width("100%").height("100%").split({orientation:'vertical', limit:1, position: "0%"});
+   $('#cont1').width("100%").height("100%").split({orientation:'vertical', limit:1, position: "0%"});
 
 
 loadDoc()
