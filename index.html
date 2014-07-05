@@ -11,7 +11,7 @@
 <script src="libs/marked.js"></script>
 
 <script src="http://rawgithub.com/ajaxorg/ace-builds/master/src/ace.js" type="text/javascript" charset="utf-8"></script>
-<script src="http://rawgithub.com/ajaxorg/ace-builds/master/src/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+<script src="libs/ext-language_tools_subject.js" type="text/javascript" charset="utf-8"></script>
 
 
 
@@ -78,6 +78,9 @@ String.repeat = function(string, num){ return new Array(parseInt(num) + 1).join(
         }
         else {
             console.log("It's PROBABLY NOT OK");
+            var modal= document.getElementById('modal');
+            var shade= document.getElementById('shade');
+            modal.style.display=shade.style.display= 'none';
             var win1 = window.open(try_url,"subj_pop","height=500, width=1100, location=no, scrollbars=yes,menubars=yes,toolbars=no,resizable=yes,left=100,top=100");
             
             timepast=false;
@@ -131,7 +134,7 @@ String.repeat = function(string, num){ return new Array(parseInt(num) + 1).join(
       
       <div id="cont" >
         <div >
-          <div id="editor"  onchange="refresh()"  onkeyup="refresh()">https://www.google.com
+          <div id="editor"  >https://www.google.com
 
 # H1
 ## H2
@@ -182,7 +185,9 @@ https://www.google.com
 
 [I'm a reference-style link][Arbitrary case-insensitive reference text]
 
-[I'm a relative reference to a repository file](../blob/master/LICENSE)
+### Link
+
+[I'm a relative reference to a repository file](md.html?url=subject/en/subject.md)
 
 [You can use numbers for reference-style link definitions][1]
 
@@ -312,19 +317,7 @@ function getParameterByName(name) {
     return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-function fillEditor(url){
-  $.ajax(
-    url)
-  .done(
-    function(data) {
-      //console.info(data)
-        //parent.$("#editor").html(data)
-        editor.setValue(data)
-        refresh();
 
-        
-    })
-}
 
 function showModal(url){
   var modal= document.getElementById('modal');
@@ -351,7 +344,7 @@ function showModal(url){
   $("#pop_url").attr("src", url)
   setTimeout(function() {
       timepast = true;
-  },200);
+  },300);
 }
 
 function loadDoc(){
@@ -362,32 +355,14 @@ function loadDoc(){
  function refresh() {
   
   var val = editor.getValue();
+  /*
   var out = marked(val , {
     xhtml: true, 
     //gfm: true,
 
   });
-
-  function toTitleCase(str){
-    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-  }
-
-  function seeSubject(){
-  	parent.$("#docu").html("<iframe id=\"frame\" src=\"subject.html\" frameborder=\"0\" scroll=\"no\"></iframe>");
-  	$("#docu").css({width:"100%", height: "100%"})
-  }
-
-  function subject() {
-    var add = '<iframe id="frame" src="subject.html" frameborder="0" scroll="no"></iframe>';
-    $("#docu").css("visibility","hidden")
-    $("#left").append(add)
-  }
-
-  
-
-  
-
-  var renderer = new marked.Renderer();
+*/
+    var renderer = new marked.Renderer();
   var content =""
 
 renderer.heading = function (text, level) {
@@ -447,7 +422,46 @@ var out = marked(val , {
 
 }
 
+  function toTitleCase(str){
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+  }
+
+  function seeSubject(){
+  	parent.$("#docu").html("<iframe id=\"frame\" src=\"subject.html\" frameborder=\"0\" scroll=\"no\"></iframe>");
+  	$("#docu").css({width:"100%", height: "100%"})
+  }
+
+  function subject() {
+    var add = '<iframe id="frame" src="subject.html" frameborder="0" scroll="no"></iframe>';
+    $("#docu").css("visibility","hidden")
+    $("#left").append(add)
+  }
+
+  
+function fillEditor(url){
+  $.ajax(
+    url)
+  .done(
+    function(data) {
+      //console.info(data)
+        //parent.$("#editor").html(data)
+        editor.setValue(data)
+        editor.fire("change")
+        //parent.refresh();
+
+        
+    })
+}
+  
+
+
+
+
+
  var editor = ace.edit("editor");
+ editor.on("change",function(obj){
+  refresh();
+ })
     var langTools = ace.require("ace/ext/language_tools");
     editor.setTheme("ace/theme/xcode");
     editor.getSession().setMode("ace/mode/markdown");
