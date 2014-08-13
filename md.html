@@ -126,7 +126,12 @@ String.repeat = function(string, num){ return new Array(parseInt(num) + 1).join(
       
       <div id="cont1" >
         <div >
-          <div id="editor1"  onchange="refresh()"  onkeyup="refresh()">
+          <div width="100%" style="height:100%;">
+            <div style="height:10%;">
+              &nbsp;&nbsp;&nbsp;<-&nbsp;Menu
+            </div>
+            <div id="editor1"  onchange="refresh()"  onkeyup="refresh()" style="height:90%;">
+            </div>
           </div>
         </div>
 
@@ -386,7 +391,9 @@ function reduceTree(tree){
 }
 
 function getLineNo(text,level){
-  var re = new RegExp(text);
+  var t = text.replace(/\[/,"\\[").replace(/\(/,"\\(").replace(/\)/,"\\)");
+  //console.info(t);
+  var re = new RegExp(t);
   for (var i = loc;i<val_arr.length;i++){
     //console.info(i);
     if (val_arr[i].search(re)>-1){
@@ -394,6 +401,8 @@ function getLineNo(text,level){
       return i+1;
     }
   }
+  
+  //return 11;
 }
 
 var temp_li = [], temp_ul = [], level_ul=0,editor=null;
@@ -418,7 +427,7 @@ var temp_li = [], temp_ul = [], level_ul=0,editor=null;
 
   renderer.heading = function (text, level) {
     var ln = getLineNo(text,level);
-    console.info(ln);
+    //console.info(ln);
     text = addHeading(text,level,ln);
     var escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
     content = content+' <span id="'+escapedText+'" onclick="goto(\''+escapedText+'\')">'+String.repeat("&nbsp;",level)+text+'</span><br/>';

@@ -392,7 +392,8 @@ function reduceTree(tree){
 }
 
 function getLineNo(text,level){
-  var re = new RegExp(text);
+  /*
+  var re = new RegExp(text.replace("[","\[").replace("]","\]"));
   for (var i = loc;i<val_arr.length;i++){
     //console.info(i);
     if (val_arr[i].search(re)>-1){
@@ -400,6 +401,8 @@ function getLineNo(text,level){
       return i+1;
     }
   }
+  */
+  return 11;
 }
 
 var temp_li = [], temp_ul = [], level_ul=0,editor=null;

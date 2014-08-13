@@ -1,19 +1,20 @@
 # Subject 
 ## Time 
-definition: 
+
 ### Present Trends 
 ### History of Universe 
++ ```details: Link``` [Time](md.html?check=true&url=subject/data/eng/time.md)
+
 ### Periods of Time 
-## Space 
-### Astronomic Map 
-### Terrestrial Map 
-### Anatomic Map 
-### Histologic Cytologic Map 
-### DNA Localisation 
-### Sub Macromolecular Localisation 
+## Space
++ ```details: Link``` [Space map](md.html?check=true&url=subject/data/eng/space-map.md)
+
 ## People Groups 
 ### Leaders 
 ### Organizations 
+### Professions
++ ```details: Link``` [Professions, Occupations](md.html?check=true&url=subject/data/eng/professions.md)
+
 ### Governments 
 ### Political Parties 
 ## Philosophy, Religion 
