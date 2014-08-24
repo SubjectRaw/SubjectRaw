@@ -56,6 +56,15 @@
 ### End
 ### Circa
 ### Circa Ago
+### Range type
+#### Supereon
+#### Eon
+#### Era
+#### Period
+#### Epoch
+#### Age
+#### Chron
+
 
 
 

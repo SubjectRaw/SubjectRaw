@@ -1,4 +1,5 @@
 # Units
++ ```details: Parent``` [Subject >> Measurement units](md.html?check=true&url=subject/data/eng/subject.md#measurement-units)
 
 ## Measurement unit
 + ```details: Definition``` A unit of measurement is a standardized quantity of a physical quality.
@@ -219,6 +220,39 @@
 + ```details: Composition``` s^−1 * mol
 
 ### Non IS (unformatted)
+
+#### Time
+
+##### minute
++ ```details: Abbreviation``` min
++ ```details: Dimension``` time
++ ```details: Dimension abbreviation``` T
++ ```details: Composition``` 60 * s
+
+##### hour
++ ```details: Abbreviation``` h
++ ```details: Dimension``` time
++ ```details: Dimension abbreviation``` T
++ ```details: Composition``` 3600 * s
+
+##### day
++ ```details: Abbreviation``` d
++ ```details: Dimension``` time
++ ```details: Dimension abbreviation``` T
++ ```details: Composition``` 86400 * s
+
+##### month
++ ```details: Abbreviation``` month
++ ```details: Dimension``` time
++ ```details: Dimension abbreviation``` T
++ ```details: Composition``` 2629743.8(3) * s
+
+
+##### year
++ ```details: Abbreviation``` y
++ ```details: Dimension``` time
++ ```details: Dimension abbreviation``` T
++ ```details: Composition``` 31556926 * s
 
 #### International customary units
 
@@ -530,7 +564,7 @@ Ehrlich unit 	Ehrlich unit 	 	[EU] 	[EU] 	no	• 	•
 + ```details: Unit``` m * s^-1
 
 
-### {220} lattice spacing of silicon
+### lattice spacing of silicon
 + ```details: Quantity``` 192.015 5714 e-12
 + ```details: Uncertainty``` 0.000 0032 e-12
 + ```details: Unit``` m

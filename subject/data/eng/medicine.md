@@ -1,4 +1,5 @@
-# MEDICINE
+# Medicine
++ ```details: Parent``` [Subject >> Medicine](md.html?check=true&url=subject/data/eng/subject.md#medicine)
 + ```details: Codes``` R - MEDICINE
 
 ## Practice of medicine.  Medical practice economics
@@ -520,7 +521,9 @@
 ### Chronic ulcer of the skin.  Bedsores
 + ```details: Codes``` RL675
 
-### Diseases due to psychosomatic and nerve disorders.###### Dermatoneuroses
+### Diseases due to psychosomatic and nerve disorders.
+
+### Dermatoneuroses
 + ```details: Codes``` RL701-751
 
 ### Diseases due to parasites

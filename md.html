@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html>
 <head>
@@ -128,7 +127,7 @@ String.repeat = function(string, num){ return new Array(parseInt(num) + 1).join(
         <div >
           <div width="100%" style="height:100%;">
             <div style="height:10%;">
-              &nbsp;&nbsp;&nbsp;<-&nbsp;Menu
+              &nbsp;&nbsp;&lt;-&nbsp;Menu
             </div>
             <div id="editor1"  onchange="refresh()"  onkeyup="refresh()" style="height:90%;">
             </div>
@@ -175,7 +174,7 @@ String.repeat = function(string, num){ return new Array(parseInt(num) + 1).join(
                   <hr>
                   <command label="facebook" onclick="alert('facebook')" icon="images/page_white_edit.png"></command>
                   <hr>
-                  <label>foo bar<input type="text" name="foo"></label>
+                  <label>future search<input type="text" name="search"></label>
                 </menu>
               </menu>
               
@@ -590,7 +589,8 @@ var temp_li = [], temp_ul = [], level_ul=0,editor=null;
 	    'data' : [treeInfo, treeToc , treeCode, treeImage],
 	    "themes" : {
 	      "variant" : "large",
-	      "stripes" : true 
+	      "stripes" : true ,
+        "icons": false
 	    }
 	  },
     /*
@@ -604,6 +604,7 @@ var temp_li = [], temp_ul = [], level_ul=0,editor=null;
 
     $treeL.on("hover_node.jstree", function (e, data) {
 	  console.log(data.node);
+    getChecked();
 	  if (getParameterByName("view") == "onto") {
 	    showNode(data.node.data[0])
 	  } else {
@@ -649,6 +650,17 @@ var temp_li = [], temp_ul = [], level_ul=0,editor=null;
 
   console.info(onto)
 
+}
+
+function getChecked(){
+  //console.info($treeL); // .get_checked(true)
+  //console.info($treeL.inst.get_checked(true));
+  // $.jstree._reference("#treeel")
+  $.each($.jstree.reference("#treeel").get_checked(),function(i, val){
+    console.info($.jstree.reference("#treeel").get_path(val));
+    //$.jstree.reference("#treeel").get_string(val); 
+
+  })
 }
 
 
