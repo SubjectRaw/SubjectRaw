@@ -1,0 +1,961 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <title>JIT.viewer.</title>
+  <link href="libs/jquery.splitter.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="libs/themes/default/style.min.css" />
+  <link href="libs/jquery.contextMenu.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="libs/jquery.contextMenu.js" type="text/javascript"></script>
+    
+    <script type="text/x-mathjax-config;executed=true">
+        
+        MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            processEscapes: true
+          },
+          TeX: {
+            equationNumbers: {
+                autoNumber: "AMS"
+            }
+          },
+          skipStartupTypeset: true,
+        });
+    
+
+
+    </script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+
+    
+  <script src="libs/jquery.splitter-0.14.0.js"></script>
+
+<script src="libs/marked.js"></script>
+<script src="libs/jstree.min.js"></script>
+<script src="libs/keymaster.min.js"></script>
+
+
+
+
+  
+  <style>
+  
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      font-family: Helvetica;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      background-color: #fff; 
+
+    }
+
+
+
+    #editor1 { 
+        position: relative;
+        width: 100%;
+        height: 100%;
+        top:0px;
+        overflow: scroll;
+
+    }
+
+        #modal, #shade {
+      display: none;
+    }
+
+    #pop_url {
+      z-index: 2099;
+      position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    
+    #shade { position: fixed; z-index: 2100; top: 0; left: 0; width: 100%; height: 100%; background: #111; opacity: 0.9; filter: alpha(opacity=80); }
+    
+    #modal { position: fixed; z-index: 2101; top: 15%; left: 15%; width: 70%; height: 70%;}
+
+    #tools { position: fixed; top:0px; left:0px; z-index:3000;}
+
+
+
+        
+    
+  </style>
+
+<script type="text/javascript">
+var timepast=false, try_url="";
+
+String.repeat = function(string, num){ return new Array(parseInt(num) + 1).join(string); }; 
+
+  function chkFrame(fr) {
+    if (try_url == "") return;
+        if(timepast) {
+            console.log("It's PROBABLY OK");
+            timepast=false;
+        }
+        else {
+            console.log("It's PROBABLY NOT OK");
+            var modal= document.getElementById('modal');
+            var shade= document.getElementById('shade');
+            modal.style.display=shade.style.display= 'none';
+            var win1 = window.open(try_url,"subj_pop","height=500, width=1100, location=no, scrollbars=yes,menubars=yes,toolbars=no,resizable=yes,left=100,top=100");
+            
+            timepast=false;
+        }
+
+  }
+
+</script>
+  
+</head>
+<body>
+
+
+      
+      <div id="cont1" >
+        <div >
+          <div width="100%" style="height:100%;">
+            <div style="height:10%;">
+              &nbsp;&nbsp;&lt;-&nbsp;Menu
+            </div>
+            <div id="editor1"  onchange="refresh()"  onkeyup="refresh()" style="height:90%;">
+
+              term:
+              <input type="text" />
+            </div>
+          </div>
+        </div>
+
+        <div id="centerRight">
+
+          <div id="tree1" > 
+            <div id="tools">
+              <div class="context-menu-one box menu-1"><img src="libs/menu_images/menu.png" width="12" height="36"></div>
+              <menu id="html5menu" type="context" style="display:none" class="showcase">
+                <menu label="Login">
+                  <command label="GitHub" onclick="alert('github')" icon="images/page_white_copy.png"></command>
+                  <hr>
+                  <command label="twitter" onclick="alert('twitter')" icon="images/page_white_edit.png"></command>
+                </menu>
+                <menu label="File">
+                  <command label="New" onclick="alert('new file')" icon="images/page_white_copy.png"></command>
+                  <hr>
+                  <command label="Open" onclick="alert('open file')" icon="images/page_white_edit.png"></command>
+                  <command label="Commit" onclick="alert('commit file')" icon="images/page_white_edit.png"></command>
+                  <command label="Append to" onclick="alert('append file')" icon="images/page_white_edit.png"></command>
+                </menu>
+                <menu label="Subject">
+                  <command label="Add Meta-subject" onclick="alert('add meta')" icon="images/page_white_copy.png"></command>
+                  <hr>
+                  <command label="Remove Meta-subject" onclick="alert('rem meta')" icon="images/page_white_edit.png"></command>
+                  
+                </menu>
+                <menu label="Vocab">
+                  <command label="Use vocab" onclick="alert('use vocab')" icon="images/page_white_copy.png"></command>
+                  <hr>
+                  <command label="Remove vocab" onclick="alert('remuve vocab')" icon="images/page_white_edit.png"></command>
+                </menu>
+                <menu label="Info">
+                  <command label="Markdown syntax" onclick="location.href='md.html?check=true&url=subject/data/eng/md.md'" icon="images/page_white_copy.png"></command>
+                  <hr>
+                  <command label="Info" onclick="alert('info')" icon="images/page_white_edit.png"></command>
+
+                </menu>
+                <menu label="share">
+                  <command label="twitter" onclick="alert('twitter')" icon="images/page_white_copy.png"></command>
+                  <hr>
+                  <command label="facebook" onclick="alert('facebook')" icon="images/page_white_edit.png"></command>
+                  <hr>
+                  <label>future search<input type="text" name="search"></label>
+                </menu>
+              </menu>
+              
+            </div>
+
+            <div id="treeel" ></div>
+          </div>
+
+
+          <div id="content1"></div>
+
+      </div>
+
+
+        
+      </div>
+
+
+      <div id="shade"></div>
+      <div id="modal">
+          <iframe src="" id="pop_url"  onload="chkFrame(this)" frameborder="0"></iframe>
+      </div>
+    
+  
+ <script>
+
+ function sr(text){
+	console.info("subject: "+text)
+	//alert(text);
+}
+
+function goto(anchor){
+  element_to_scroll_to = $('a[name='+anchor+']')
+  element_to_scroll_to[0].scrollIntoView();
+}
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+function getAnchor(){
+  console.info(location.href.substr(location.href.search(/#/)));
+
+  return location.href.substr(location.href.search(/#/)+1);
+}
+
+function fillEditor(url){
+  $.ajax(
+    url)
+  .done(
+    function(data) {
+      //console.info(data)
+        //parent.$("#editor").html(data)
+        editor.setValue(data)
+        refresh();
+
+        
+    })
+}
+
+
+function loadDoc(){
+  var url = getParameterByName("url");
+  if (url) fillEditor(url);
+
+}
+
+var onto= {
+  minLevel: 1,
+  data: null,
+  pointer: null,
+  parent: null
+}, ontondx=[], tree=null, $treeL= null;
+
+var levels = [], levPoint = [null], uniq = [], treeToc, val="", val_arr=[],loc=0;
+
+function addHeading(text, level, ln){
+  //onto;
+  //this
+  //console.info(ln)
+  //console.info(onto.data.length)
+  if (uniq[text] == undefined) {
+    uniq[text] =1;
+  } else {
+    uniq[text] =1+uniq[text];
+    text = text+" "+uniq[text];
+  }
+  temp_head = text;
+  if (levels.length == 0) {
+    levels.push({parent: null, node: text, icon: "", ln: ln})
+    levPoint[level-1] = levels[level-1]
+  } else {
+    levels.push({parent: levPoint[level-2], node: text, icon: "", ln: ln})
+    levPoint[level-1] = levels[levels.length-1]
+
+  }
+  return text;
+
+
+}
+
+var codes=[], images=[],last_code="";
+
+function addCode(code){
+  last_code = code;
+  if (codes[code] == undefined) {
+    codes[code]= {
+      data: code.toLowerCase().replace(/[^\w]+/g, '-'),
+      icon: "",
+      text: code,
+      children: [{data: temp_head.toLowerCase().replace(/[^\w]+/g, '-'), text: temp_head}]
+    }
+  } else {
+    codes[code].children.push({data: temp_head.toLowerCase().replace(/[^\w]+/g, '-'), text: temp_head})
+  }
+  
+}
+
+function addImage(href, title, text){
+  console.info(title,text);
+  //return;
+  if (images[title] == undefined) {
+    images[title]= {
+      data: title.toLowerCase().replace(/[^\w]+/g, '-'),
+      icon: "",
+      text: title,
+      children: [{data: temp_head.toLowerCase().replace(/[^\w]+/g, '-'), text: temp_head}]
+    }
+  } else {
+    images[title].children.push({data: temp_head.toLowerCase().replace(/[^\w]+/g, '-'), text: temp_head})
+  }
+}
+
+function getTree( lev, ndx){
+  console.info(levels)
+  if (ndx === undefined) {
+    var link = levels[0].node.toLowerCase().replace(/[^\w]+/g, '-') 
+    onto.data = {text: levels[0].node, icon: levels[0].icon, data: [link, levels[0].ln], parent: null,  children: []} // 
+    
+    ontondx[link] = onto.data
+  }
+  for (item in levels){
+    if (item == 0) continue;
+    link = levels[item].node.toLowerCase().replace(/[^\w]+/g, '-')
+    ontondx[levels[item].parent.node.toLowerCase().replace(/[^\w]+/g, '-')].children.push({text: levels[item].node, icon: levels[item].icon, data: [levels[item].node.toLowerCase().replace(/[^\w]+/g, '-'), levels[item].ln] , children: [] , parent:ontondx[levels[item].parent.node.toLowerCase().replace(/[^\w]+/g, '-')]}) 
+    // , parent:ontondx[levels[item].parent.node.toLowerCase().replace(/[^\w]+/g, '-')]
+    ontondx[link] = ontondx[levels[item].parent.node.toLowerCase().replace(/[^\w]+/g, '-')].children[ontondx[levels[item].parent.node.toLowerCase().replace(/[^\w]+/g, '-')].children.length-1]
+  }
+  tree = ontondx[levels[0].node.toLowerCase().replace(/[^\w]+/g, '-')]
+  console.info(codes)
+  //console.info(reduceTree(tree))
+  tree = reduceTree(tree)
+
+  var kids =[]
+  for (item in codes){
+    kids.push(codes[item])
+  }
+
+
+  treeCode = {
+    id: "index",
+    icon: "",
+    text: "Citations",
+    children: kids
+  };
+
+  var kids =[]
+  for (item in images){
+    kids.push(images[item])
+  }
+
+  treeImage = {
+    id: "plates",
+    icon: "",
+    text: "Plates",
+    children: kids
+  }
+
+  treeToc = {
+    id: "toc",
+    icon: "",
+    text: "Table of Contents",
+    children: [tree],
+    state       : {
+      opened    : true
+    }
+  }
+
+  treeInfo = {
+    id: "info",
+    icon: "",
+    text: "Info",
+    children: ["Subjects", "Vocabularies"],
+    state       : {
+      opened    : true
+    }
+  }
+
+
+
+
+}
+
+function reduceTree(tree){
+  var tree1 = {text: tree.text, icon: tree.icon, data: tree.data, children: []}
+  for (item in tree.children){
+    tree1.children.push(reduceTree(tree.children[item]))
+  }
+  return tree1
+}
+
+function getLineNo(text,level){
+  var t = text.replace(/\[/,"\\[").replace(/\(/,"\\(").replace(/\)/,"\\)");
+  //console.info(t);
+  var re = new RegExp(t);
+  for (var i = loc;i<val_arr.length;i++){
+    //console.info(i);
+    if (val_arr[i].search(re)>-1){
+      loc = i+1;
+      return i+1;
+    }
+  }
+  
+  //return 11;
+}
+
+var temp_li = [], temp_ul = [], level_ul=0,editor=null;
+
+ function refresh() {
+  ontondx=[];
+  levels = [];
+  codes=[];
+  images=[];
+  uniq=[]
+  uniq2=[]
+  tree = null;
+  levPoint = [null];
+  loc=0;
+
+  
+  val = editor.getValue();
+  val_arr = val.split("\n");
+
+  var renderer = new marked.Renderer();
+  var content =""
+
+  renderer.heading = function (text, level) {
+    var ln = getLineNo(text,level);
+    //console.info(ln);
+    text = addHeading(text,level,ln);
+    var escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+    content = content+' <span id="'+escapedText+'" onclick="goto(\''+escapedText+'\')">'+String.repeat("&nbsp;",level)+text+'</span><br/>';
+    
+    
+    return '<h' + level + '><a name="' +
+                  escapedText +
+                   '" class="anchor" href="#' +
+                   escapedText +
+                   '"><span class="header-link"></span></a>' +
+                    text + '</h' + level + '>';
+  }
+
+  renderer.codespan = function(text) {
+    addCode(text);
+	  return '<code class="cMenu" onmouseover="sr(\''+text+'\');">' + text + '</code>';
+	};
+
+  
+
+  renderer.list = function(body, ordered) {
+    var type = ordered ? 'ol' : 'ul';
+    level_ul = 1+ level_ul;
+    
+    console.info(temp_ul);
+    
+    return '<' + type + '>\n' + body + '</' + type + '>\n';
+
+  };
+
+  
+  renderer.listitem = function(text) {
+    
+    var hier_text = text.substring(0,(text.search(/</) > -1) ? text.search(/</) : text.length);
+    if (text.search(/</) > -1) {
+      hier_text = text.substring(0, text.search(/</));
+      //temp_li.push(hier_text);
+      //var tem = temp_li;
+      
+      //temp_li = [];
+      //temp_ul = hier_text;
+    } else {
+      hier_text = text;
+      //temp_li.push(hier_text);
+    }
+    temp_ul.push(hier_text);
+    console.info(last_code+ ": "+hier_text);
+
+    
+
+    return '<li>' + text + '</li>\n';
+  };
+
+  renderer.image = function(href, title, text) {
+    addImage(href, title, text)
+    var out = '<img src="' + href + '" alt="' + text + '"';
+    if (title) {
+      out += ' title="' + title + '"';
+    }
+    out += this.options.xhtml ? '/>' : '>';
+    return out;
+  };
+
+  var out = marked(val , {
+    xhtml: true, 
+    renderer: renderer
+    //gfm: true,
+
+  });
+
+  $.contextMenu({
+        selector: '.cMenu', 
+        trigger: 'hover',
+        delay: 500,
+        autoHide: true,
+        callback: function(key, options) {
+            var m = "clicked: " + key;
+            console.info(this[0].innerText)
+
+            var text = this[0].innerText;
+            var path = text.split(": ");
+            var link = false;
+
+            switch (path[0].replace(/[^\w]+/g, '-').toLowerCase()){
+              case "link":
+                link = true;
+
+            }
+            
+
+            //window.console && console.log(m) || alert(m); 
+            if (!link) {
+              switch (key){
+              case "open":
+                var href = "md.html?view=text&url=subject/data/eng/"+path[0].replace(/[^\w]+/g, '-').toLowerCase()+".md#"+path[1].replace(/[^\w]+/g, '-').toLowerCase();
+                break;
+              case "openIn_GScholar":
+                var href = "http://scholar.google.com/scholar?hl=en&q="+path[1]+"&btnG=&as_sdt=1%2C5&as_sdtp="
+                break;
+              case "openIn_Google":
+                var href = "https://www.google.com/?gws_rd=ssl#newwindow=1&q="+text;
+                break;
+              case "openIn_GImages":
+                var href = "https://www.google.com/search?q="+path[1]+"&newwindow=1&safe=off&source=lnms&tbm=isch&sa=X&ei=2ajOU6jcHIPnywOY5YLgCQ&ved=0CAgQ_AUoAw&biw=1236&bih=680";
+                break; 
+
+              case "openIn_Wikipedia":
+                var href = "http://en.wikipedia.org/w/index.php?title=Special:Search&search="+path[1]+"&profile=default";
+                break;
+              default:
+                
+                break;
+            }
+            showModal(href );
+
+
+            } else {
+              var href = "md.html?check=true&url=subject/data/eng/"+path[1].replace(/[^\w]+/g, '-').toLowerCase()+".md#"+path[2].replace(/[^\w]+/g, '-').toLowerCase();
+              location.href = href;
+            }
+            
+        },
+        items: {
+            "open": {name: "See Term"},
+            "openIn": {name: "Open Term In...",
+              items: {
+                "openIn_Google": {name: "Google Websearch"},
+                "openIn_GScholar": {name: "Google Scholar"},
+                "openIn_GImages": {name: "Google Images"},
+                "openIn_Wikipedia": {name: "Wikipedia"},
+              }
+            },
+            "fold1a": {
+                "name": "Other Options", 
+                "items": {
+                    "fold1a-key1": {"name": "We invite you"},
+                    "fold1a-key2": {"name": "to write your own"},
+                    "fold1a-key3": {"name": "plugins and options"}
+                }
+            }
+        }
+    });
+    
+    $('.cMenu').on('click', function(e){
+        console.log('clicked', this);
+    })
+
+  getTree();
+
+  var tree_plugins = [ "search" , "wholerow", "state" ];
+
+  if (getParameterByName("check") == "true") tree_plugins.push("checkbox")
+
+
+
+  if ($treeL != null) {
+    $('#tree1').html('<div id="treeel"></div>')
+  } 
+    $treeL = $('#treeel').jstree( { 'core' : {
+	    'data' : [treeInfo, treeToc , treeCode, treeImage],
+	    "themes" : {
+	      "variant" : "large",
+	      "stripes" : true ,
+        "icons": false
+	    }
+	  },
+    /*
+	  "checkbox" : {
+	    "keep_selected_style" : false
+	  },
+    */
+	  "plugins" : tree_plugins
+	}/* optional config object here */ 
+	);
+
+    $treeL.on("hover_node.jstree", function (e, data) {
+	  console.log(data.node);
+    getChecked();
+	  if (getParameterByName("view") == "onto") {
+	    showNode(data.node.data[0])
+	  } else {
+
+		  goto(data.node.data[0]);
+      console.info(data.node);
+
+      editor.gotoLine(data.node.data[1]); //data.node.ln  Math.int(Math.random()*300)
+		}
+	  console.info(e)
+	});
+
+	var to = false;
+
+	$treeL.keyup(function () {
+	    if(to) { clearTimeout(to); }
+	    to = setTimeout(function () {
+	      var v = $treeL.val();
+	      $treeL.jstree(true).search(v);
+	    }, 250);
+	  });
+  
+  
+  console.info(tree)
+  if (getParameterByName("view") == "onto") {
+    showNode("archaea")
+  } else {
+
+    var codeel =document.getElementById("content1")
+    codeel.innerHTML =out;
+    goto(getAnchor())
+
+    MathJax.Hub.Queue(['resetEquationNumbers', MathJax.InputJax.TeX],
+                          ['Typeset', MathJax.Hub, codeel])
+
+
+
+  }
+
+  
+
+  //
+
+  console.info(onto)
+
+}
+
+function getChecked(){
+  //console.info($treeL); // .get_checked(true)
+  //console.info($treeL.inst.get_checked(true));
+  // $.jstree._reference("#treeel")
+  $.each($.jstree.reference("#treeel").get_checked(),function(i, val){
+    console.info($.jstree.reference("#treeel").get_path(val));
+    //$.jstree.reference("#treeel").get_string(val); 
+
+  })
+}
+
+
+  function toTitleCase(str){
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+  }
+
+  function seeSubject(){
+    parent.$("#docu").html("<iframe id=\"frame\" src=\"subject.html\" frameborder=\"0\" scroll=\"no\"></iframe>");
+    $("#docu").css({width:"100%", height: "100%"})
+  }
+
+  function subject() {
+    var add = '<iframe id="frame" src="subject.html" frameborder="0" scroll="no"></iframe>';
+    $("#docu").css("visibility","hidden")
+    $("#left").append(add)
+  }
+
+  
+
+  String.repeat = function(string, num){ return new Array(parseInt(num) + 1).join(string); };
+
+
+
+    //editor.setTheme("ace/theme/xcode");
+    //editor.getSession().setMode("ace/mode/markdown");
+    //editor.getSession().setUseWrapMode(true);
+
+
+    var choices = [], try_url="";
+
+
+    var dict = "computing"
+
+    var subjPointer = "subject/data/eng/"+dict+".md";
+    var choices = [], try_url="", temp_head="",uniq2=[];
+
+    $.ajax(subjPointer)
+      .done(function(data) {
+        var renderer2 = new marked.Renderer();
+        
+        renderer2.heading = function (text, level) {
+          //var escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+          //content = content+' <span id="'+escapedText+'" onclick="goto(\''+escapedText+'\')">'+String.repeat("&nbsp;",level)+text+'</span><br/>';
+          if (uniq2[text] == undefined) {
+            uniq2[text] =1;
+          } else {
+            uniq2[text] =1+uniq2[text];
+            text = text+" "+uniq2[text];
+          }
+          choices.push(text)
+        }
+        var out2 = marked(data , {
+          xhtml: true, 
+          renderer: renderer2
+        });
+      })
+
+
+
+
+
+
+
+    
+
+jQuery(function($) {
+  var pos1 = "30%", pos2 = "0%";
+  if (getParameterByName("check") == "true"){
+    pos1 = "0%";
+    pos2 = "98%";
+  } 
+  if (getParameterByName("view") == "text"){
+    pos1 = "0%";
+    pos2 = "0%";
+  } 
+  $('#cont1').width("100%").height("100%").split({orientation:'vertical', limit:2, position: pos1});
+  $('#centerRight').width("100%").height("100%").split({orientation:'vertical', limit:2, position: pos2});
+  //$('#tree1').split({orientation:'horizontal', limit:3, position: "8%"});
+
+  $.contextMenu({
+        selector: '.context-menu-one', 
+        trigger: 'hover',
+        delay: 500,
+        autoHide: true,
+        items: $.contextMenu.fromMenu($('#html5menu'))
+    });
+
+
+loadDoc()
+
+
+
+});
+
+
+function showNode(link) {
+  object = ontondx[link];
+  console.info(object);
+  $("#content1").html("").css("text-align", "center")
+  renderCard("node",object.id,{w:25,h:25,x:37,y:37},object.text,"")
+  spot = [ 
+    {x: 42, y: 19},
+    {x: 42, y: 66},
+    {x: 19, y: 42},
+    {x: 65, y: 42},
+    {x: 25, y: 25},
+    {x: 59, y: 25},
+    {x: 25, y: 59},
+    {x: 59, y: 59},
+  ]
+  for(item in object.children){
+    renderCard("kid",object.children[item].id,{w:15,h:15,x:spot[item].x,y:spot[item].y},object.children[item].text,"") // object[item].image.url
+  }
+
+  if (object.parent != null) {
+
+    for(item in object.parent.children){
+      renderCard("bro",object.parent.children[item].id,{w:11,h:11,x:88,y:1+item*12},object.parent.children[item].text,"") // object[item].image.url
+    }
+  }
+
+  
+
+  var i = 0
+
+  while(object != null){
+    renderCard("path",object.id,{w:11,h:11,x:1+"%",y:87-i*12},object.text,"") // object[item].image.url
+    i = i+1
+    object = object.parent
+  }
+
+
+}
+
+
+function process(id){
+  if (getParameterByName("view") == "onto") {
+    showNode(id)
+    return;
+  } 
+
+  //var id = "1011"
+  var node = selectFrom(subject, "term_id", [id])
+  console.info(node)
+  var k_rels = selectFrom(rel, "subject", [id])
+  k_rels1 = reduce(k_rels,"item_id")
+  var children = selectFrom(subject, "term_id", k_rels1)
+  var p_rels =  selectFrom(rel, "item_id", [id])
+  p_rels1 = reduce(p_rels,"subject")
+  var parents = selectFrom(subject, "term_id", p_rels1)
+  if (parents[0]) {
+    var id_p = parents[0].term_id
+    var b_rels = selectFrom(rel, "subject", [id_p])
+    b_rels1 = reduce(b_rels,"item_id")
+    var brothers = selectFrom(subject, "term_id", b_rels1)
+    
+    getImages(brothers)
+    getParents(parents)
+    getImages(parents)
+  }
+
+  
+  
+  
+  getImages(children)
+  getImages(node)
+
+  
+  
+  console.info(parents)
+  //console.info(parents)
+  //console.info(brothers)
+
+$("#content1").html("")
+
+renderChildren(children)
+renderNode(node)
+renderBrothers(brothers)
+renderParents(parents)
+
+}
+
+function getParents(object){
+  var p_rels =  selectFrom(rel, "item_id", [object[0].term_id])
+  p_rels1 = reduce(p_rels,"subject")
+  var parents = selectFrom(subject, "term_id", p_rels1)
+  if (parents[0]) {
+    var id_p = parents[0].term_id
+    object.push(parents[0])
+  }
+}
+
+function renderChildren(object){
+  spot = [ 
+    {x: 42, y: 19},
+    {x: 42, y: 66},
+    {x: 19, y: 42},
+    {x: 65, y: 42},
+    {x: 25, y: 25},
+    {x: 59, y: 25},
+    {x: 25, y: 59},
+    {x: 59, y: 59},
+  ]
+  for(item in object){
+    renderCard("kid",object[item].term_id,{w:15,h:15,x:spot[item].x,y:spot[item].y},object[item].term,"") // object[item].image.url
+  }
+}
+
+function renderBrothers(object){
+  for(item in object){
+    renderCard("bro",object[item].term_id,{w:11,h:11,x:88,y:1+item*12},object[item].term,"") // object[item].image.url
+  }
+}
+
+function renderParents(object){
+  for(item in object){
+    renderCard("bro",object[item].term_id,{w:11,h:11,x:1+"%",y:87-item*12},object[item].term,"") // object[item].image.url
+  }
+}
+
+function getImages(object){
+  var images =[],item
+
+  for (item in object){
+    images = selectFrom(image, "id", [object[item].image]) 
+    
+    object[item].image = images[0]
+
+  }
+}
+
+function reduce(object,field){
+  var out = [],item;
+  for (item in object){
+    out.push(object[item][field])
+  }
+  return out;
+}
+
+function selectFrom(object,field,values){
+  var out = [],item;
+  for (item in object){
+    if ( values.indexOf(object[item][field]) >= 0 ) out.push(object[item])
+  }
+  return out;
+}
+
+renderNode = function(object){
+  console.info(object)
+  renderCard("node",object[0].term_id,{w:25,h:25,x:37,y:37},object[0].term,"")
+}
+
+renderCard = function(type,id,dims,text,url){
+  var out = "",img = '',r=6;
+  if (url == undefined || url == "") url= "none.svg"
+  img ='<img src="subject/data/image/'+url+'" width="'+dims.h*3+'" height="'+dims.h*3+'"  style="position:relative;border:0px;" />'
+  img = '<svg width="'+dims.h*3+'" height="'+dims.h*3+'" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><rect ry="100" rx="100" id="svg_21" height="1024" width="1024" y="0" x="0" fill="#bfbfbf"/><text transform="matrix(4,0,0,4,-850,-415.6) " font-weight="bold" xml:space="preserve" text-anchor="middle" font-family="Helvetica" font-size="216" id="svg_2" y="300" x="330" fill="#7f7f7f">?</text></svg>';
+  out = out+'<style>#id'+type+id+'{position: absolute;width:'+dims.w+'%;height:'+dims.h+'%;border-top-left-radius:'+r+'px;border-top-right-radius:'+r+'px;border-bottom-right-radius:'+r+'px;border-bottom-left-radius:'+r+'px;box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;left:'+dims.x+'%;top:'+dims.y+'%;background-color:#fff}</style><div onclick="process(\''+id+'\')" id="id'+type+id+'">'+img+'<div style="font-size:'+dims.h+'px;">'+text+'</div></div>';
+  $("#content1").append(out)
+
+}
+
+
+
+function showModal(url){
+  var modal= document.getElementById('modal');
+  var shade= document.getElementById('shade');
+  modal.style.display=shade.style.display= 'block';
+  shade.onclick= function() {
+    modal.style.display=shade.style.display= 'none';
+    $("#pop_url").attr("src", "")
+    try_url = "";
+  }
+  if (!('maxHeight' in document.body.style)) {
+      function modalsize() {
+          var top= document.documentElement.scrollTop;
+          var winsize= document.documentElement.offsetHeight;
+          var docsize= document.documentElement.scrollHeight;
+          shade.style.height= Math.max(winsize, docsize)+'px';
+          modal.style.top= top+Math.floor(winsize/3)+'px';
+      };
+      modal.style.position=shade.style.position= 'absolute';
+      window.onscroll=window.onresize= modalsize;
+      modalsize();
+  }
+  try_url = url;
+  $("#pop_url").attr("src", url)
+  setTimeout(function() {
+      timepast = true;
+  },300);
+}
+
+    </script>
+  
+</body>
+</html>
