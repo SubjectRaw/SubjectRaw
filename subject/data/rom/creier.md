@@ -1,15 +1,15 @@
 # creier 
-## prosencefal
-### endbrain 
+## prozencefal
+### telencefal
 #### fornix 
 ##### coloană anterioară a fornixului 
 ##### fornix precomisural 
 ##### corp al fornixului
 ##### coloană posterioară a fornixului
-##### comisură a hipocampusului 
+##### comisură a hipocampului
 #### substanță nenumită
 #### nucleu magnocelular bazal 
-#### insule de Calleja 
+#### insule Calleja 
 #### nucleu accumbens 
 #### bulb olfactiv 
 #### nucleu olfactiv anterior 
@@ -18,29 +18,29 @@
 #### peduncul olfactiv 
 #### tract olfactiv 
 #### bandă diagonală 
-#### stria terminalis 
+#### strie terminală
 #### proiecție amigdalofugală ventrală
 #### materie albă cerebrală
 ##### capsulă internă 
 ###### braț anterior al capsulei interne 
 ###### genunuchi al capsulei interne 
 ###### braț posterior al capsulei interne 
-####### parte lenticulothalamică a capsulei interne 
+####### parte lenticulotalamică a capsulei interne 
 ####### parte retrolenticulară a capsulei interne 
 ####### parte sublenticulară a capsulei interne 
-##### centrul semioval
+##### centru semioval
 ##### corp calos 
 ###### forceps anterior al corpului calos 
 ###### rostru al corpului calos 
 ###### genunchi al corpului calos 
-###### trunchi al corpului calos 
+###### corp al corpului calos 
 ###### splenium al corpului calos 
 ###### forceps posterior al corpului calos 
 ##### comisura anterioară 
 ###### braț olfactiv al comisurii anterioare 
 ###### braț temporal al comisurii anterioare 
 ###### decusație a comisurii anterioare 
-##### lamina terminalis 
+##### lamină terminală
 ##### capsulă exterioară 
 ##### capsulă extremă 
 ##### substanță albă a lobului occipital
@@ -51,16 +51,16 @@
 ###### substanță albă occipitală
 ##### substanță albă limbică
 ###### substanță albă cingulară
-####### substanță albă a cingularului anterior
-####### substanță albă a cingularului posterior
+####### substanță albă cingulară anterioară
+####### substanță albă cingulară posterioară
 ####### istm al substanței albe cingulare
 ###### substanță albă parahipocampică
 ####### substanță albă parahipocampică posterioară
-####### substanță albă entorhinală
+####### substanță albă entorinală
 ##### substanță albă parietală
 ###### substanță albă postcentrală
 ###### substanță albă precuneată
-###### substanță albă unghiulară
+###### substanță albă angulară
 ###### substanță albă parietală superioară
 ###### substanță albă supramarginală
 ##### substanță albă temporală
@@ -75,50 +75,50 @@
 ###### substanță albă frontală superioară
 ###### substanță albă frontală inferioară
 ###### substanță albă frontală medie
-###### drept materia alba 
+###### substanță albă dreaptă
 ###### substanță albă fronto-orbitală
 #### ventricul lateral 
-##### plex coroid al ventriculului lateral 
-##### membrană coroidală al ventriculului lateral 
+##### plex coroidian al ventriculului lateral 
+##### membrană coroidiană al ventriculului lateral 
 ##### corn frontal al ventriculului lateral 
-##### trunchi ventricul lateral 
+##### corp ventricul lateral 
 ##### corn temporal al ventriculului lateral 
 ##### corn occipital al ventriculului lateral 
-##### velum terminale 
+##### văl terminal
 #### ganglioni bazali 
-##### striatum 
+##### striat
 ###### putamen 
 ###### nucleu caudat 
 ####### cap al nucleului caudat 
-####### trunchi al nucleului caudat 
+####### corp al nucleului caudat
 ####### coadă a nucleului caudat 
-##### globus pallidus 
-###### globus pallidus lateral 
-###### globus pallidus medial 
+##### glob palid
+###### glob palid lateral
+###### glob palid medial
 ###### lamină medulară laterală
 ###### lamină medulară medială
-###### accesoriu laminei medulare
-##### amigdala 
+###### lamină medulară accesorie
+##### amigdală
 ###### grup nuclear corticomedial 
 ####### zonă amigdaloidă anterioară
 ####### nucleu amigdaloid cortical 
 ####### nucleu amigdaloid medial 
 ####### nucleu al tractului olfactiv lateral 
 ###### nucleu amigdaloid central
-###### grup nuclear basolateral 
+###### grup nuclear bazolateral 
 ####### nucleu amigdaloid lateral 
 ####### nucleu amigdaloid bazolateral
 ######## parte laterală a nucleului bazolateral 
 ######## parte medială a nucleului bazal amigdaloid 
-####### accesoriu nucleului bazal
-###### nuclee amigdaloide intercalate 
+####### nucleu bazal accesoriu
+###### nuclei amigdaloizi intercalați
 ##### endopiriform claustrum 
 ##### claustrum 
 #### sept 
-##### septum pellucidum
-###### peșteră de pellucidum sept 
+##### sept pellucid
+###### cameră a septului pellucid
 ###### lamină a septului pellucid
-##### nuclee septale 
+##### nuclei septali
 ###### nucleu septal dorsal
 ###### nucleu septal lateral 
 ###### nucleu septal medial 
@@ -126,12 +126,12 @@
 ###### nucleu septofimbrial 
 ###### nucleu al benzii diagonale
 ###### nucleu al comisurii anterioare 
-###### nucleu al stria terminalis 
+###### nucleu al striei terminale
 #### cortex cerebral 
 ##### lob frontal 
 ###### giri frontopolari transversali (uman) 
 ####### girus frontopolar inferior (uman) 
-####### girus frontopolar de medial (uman) 
+####### girus frontopolar medial (uman) 
 ####### girus frontopolar superior
 ###### girus rostral superior (uman) 
 ###### girus drept 
@@ -184,26 +184,26 @@
 ####### girus paraterminal 
 ####### girus supracalosal 
 ######## indusium griseum
-######## stria longitudinală laterală
-######## stria longitudinală medială
+######## strie longitudinală laterală
+######## strie longitudinală medială
 ####### fasciola cinerea 
-####### formarea hipocampică
+####### formațiune hipocampică
 ######## fisură fimbriodințată
 ######## girus dințat 
 ######### fascia dințată
 ######### hil al girusului dințat 
-######## câmpi CA 
+######## câmpuri CA
 ######### câmp CA1 
 ######### câmp CA2 
 ######### câmp CA3 
 ######## alveus 
-######## fimbria 
+######## fimbrie
 ######## subiculum 
 ###### girus parahipocampic 
 ####### zonă piriformă
-####### zonă periamigdalodă
+####### zonă periamigdaloidă
 ####### presubiculum 
-####### zonă entorhinală
+####### zonă entorinală
 ####### girus parahipocampic posterior
 ###### girus cingular 
 ####### girus cingular anterior 
@@ -217,14 +217,14 @@
 ###### nucleu anteromedial al talamusului 
 ###### nucleu anteroventral al talamusului 
 ##### grup nuclear intralaminar 
-###### nuclee intralaminare rostrale
-####### nucleu central dorsal 
+###### nuclei intralaminari rostrali
+####### nucleu dorsal central
 ####### nucleu lateral central
 ####### nucleu medial central
 ####### nucleu paracentral
 ###### nucleu centromedian 
 ###### nucleu parafascicular 
-##### grup nuclear linia mediană 
+##### grup nuclear linie mediană 
 ###### nucleu paratenial 
 ###### nucleu paraventricular al talamusului 
 ###### nucleu reuniens 
@@ -251,7 +251,7 @@
 ####### parte orală a nucleului lateral ventral 
 ####### parte caudală a nucleului lateral ventral 
 ####### parte medială a nucleului lateral ventral 
-####### postrema pars a nucleului lateral ventral 
+####### parte postremă a nucleului lateral ventral 
 ####### zonă X 
 ###### nucleu posterior ventral 
 ####### nucleu posterolateral ventral 
@@ -267,7 +267,7 @@
 ###### nucleu suprageniculat
 ###### nucleu submedial 
 ##### nucleu reticular al talamusului 
-##### broșuri de fibre talamice 
+##### tracturi de fibre talamice
 ###### lamină medulară externă
 ###### lamină medulară internă
 ###### peduncul talamic anterior
@@ -286,21 +286,21 @@
 ####### capsulă a corpului geniculat medial 
 ####### nucleu posterodorsal al corpului geniculat medial 
 ####### nucleu anterodorsal al corpului geniculat medial 
-##### strat zonale de talamusului 
+##### strat zonal al talamusului 
 #### epitalamus 
 ##### habenulă
 ###### habenulă laterală
 ###### habenulă medială
 ##### glandă pineală
-##### stria medulară
+##### strie medulară
 ##### comisură habenulară
 #### hipotalamus 
 ##### regiune hipotalamică anterioară 
 ###### nucleu periventricular anteroventral 
-###### organum vasculosum 
+###### organ vasculos
 ###### nucleu suprachiasmatic 
 ###### nucleu supraoptic 
-###### zonă hipotalamoică anterioară
+###### zonă hipotalamică anterioară
 ###### nucleu paraventricular al hipotalamusului 
 ###### decusaţie supraoptică dorsală
 ###### decusaţie supraoptică ventrală
@@ -334,7 +334,7 @@
 ####### parte medială a nucleului mamilar medial 
 ####### parte laterală a nucleului mamilar medial 
 ###### zonă supramamilară
-###### nuclee premamilare
+###### nuclei premamilari
 ###### nucleu periventricular posterior 
 ###### zonă hipotalamică posterioară
 ###### comisură supramamilară
@@ -343,16 +343,16 @@
 ###### tract mamilotalamic al hipotalamusului 
 ###### peduncul mamilar
 ##### zonă hipotalamică laterală 
-###### nucleu tuberomammillary 
-###### nuclee tuberal laterale 
-##### dorsal zonă hipotalamo 
-##### fornix postcommissural 
-##### dorsal fasciculus longitudinală a hipotalamusului 
-##### medial forebrain bundle 
+###### nucleu tuberomamilar
+###### nuclei tuberali laterali
+##### zonă hipotalamică dorsală
+##### fornix postcomisural 
+##### fascicul dorsal longitudinal al hipotalamusului
+##### fascicul prozencefalic medial
 #### subtalamus 
 ##### nucleu subtalamic 
 ##### nucleu al ansei lenticulare
-##### nucleu de câmp H 
+##### nucleu al câmpului H
 ##### zonă incertă
 ##### câmp H1 
 ##### câmp H 
@@ -361,21 +361,21 @@
 ##### fascicul palidohabenular 
 ##### ansă lenticulară
 ##### ansă pedunculară
-#### velum interpositum 
-#### al treilea ventricul 
-##### plex coroidian al ventriculului 3
-##### membrană coroidă a ventriculului 3
+#### văl interpus
+#### ventricul trei
+##### plex coroidian al ventriculului trei
+##### membrană coroidiană a ventriculului trei
 ##### organ subfornical 
 ##### nișă suprapineală
 ##### nișă pineală 
 ##### nișă optică
 ##### nișă infundibulară
 #### foramen interventricular
-#### chiasm optic 
+#### chiasmă optică
 #### tract optic 
 #### fascicul retroflex al diencefalului
 ## mezencefal 
-### tectum
+### tect
 #### regiune pretectală
 ##### nucleu al zonei pretectale 
 ##### nucleu principal pretectal 
@@ -396,11 +396,11 @@
 #### braț superior al coliculului
 #### comisură superioară a coliculului
 ### peduncul cerebral 
-#### tegmentum mezencefal 
+#### tegment mezencefal
 ##### tract mezencefalic al nervului trigemen 
 ##### nucleu trigemen mezencefal 
 ##### apeduct cerebral 
-##### gri periaqueductal 
+##### substanță cenușie periapeductală
 ##### nucleu al comisurii posterioare 
 ##### nucleu al rafeului dorsal 
 ##### nucleu trohlear
@@ -418,7 +418,7 @@
 ##### fascicul logitudinal dorsal al mezencefalului
 ##### fascicul logitudinal medial al mezencefalului
 ##### decusație a pedunculului cerebelos superior 
-##### tract tegmentală central al mezencefalului 
+##### tract tegmental central al mezencefalului 
 ##### fibre nervoase oculomotoare
 ##### fascicul palidotegmental 
 ##### picior lateral al lemniscului
@@ -435,7 +435,7 @@
 ###### nucleu oculomotor parvocelular 
 ###### nucleu oculomotor central 
 ###### nucleu oculomotor caudal central 
-##### formațiune reticulată mezencefală
+##### formațiune reticulată mezencefal
 ###### nucleu cuneiform 
 ###### nucleu subcuneiform 
 ###### nucleu pedunculopontin
@@ -449,22 +449,22 @@
 #### substanţă neagră
 ##### parte compactă
 ##### parte reticulată
-#### crus cerebri 
+#### pilier cerebral
 ## creier mic 
 ### metencefal
 #### punte
 ##### punte bazală
-###### nuclee pontine 
+###### nuclei pontini
 ###### fibre pontine longitudinale 
 ###### fibre pontine transversale 
 ###### peduncul cerebelos mijlociu 
-##### al patrulea ventricul 
-###### plex coroid al ventriculului 4
-###### membrană coroidă a ventriculului 4
-###### deschidere laterală 
-###### deschidere mediană
-###### nișă laterală a ventriculului 4
-###### corp al ventriculului 4
+##### ventricul patru
+###### plex coroidian al ventriculului patru
+###### membrană coroidiană a ventriculului patru
+###### apertură laterală
+###### apertură mediană
+###### reces lateral al ventriculului patru
+###### corp al ventriculului patru
 ##### tegment pontin 
 ###### complex olivar superior
 ####### olivă superioară 
@@ -472,10 +472,10 @@
 ######## nucleu olivar superior medial 
 ####### regiune periolivară
 ####### grup de celule retro-olivare 
-####### nucleu trapez 
+####### nucleu trapezoid
 ####### fascicul olivocohlear 
 ####### peduncul olivar superior 
-###### nucleu motor a nervului trigemen 
+###### nucleu motor al nervului trigemen 
 ###### nucleu senzorial principal al nervului trigemen 
 ###### formațiune reticulată pontină
 ####### nucleu al rafeului paramedian
@@ -484,7 +484,7 @@
 ####### nucleu al eminenței mediale
 ####### nucleu reticular pontin rostral
 ####### nucleu reticular pontin caudal
-####### substanţă cenuşie pontin centrală
+####### substanţă cenuşie pontină centrală
 ####### nucleu reticulotegmental 
 ###### fibre ale nervului facial 
 ####### fibre ascendente ale nervului facial 
@@ -494,13 +494,13 @@
 ###### nucleu subceruleus 
 ###### nucleu abducens  
 ###### nucleu facial 
-###### nucleu parabrachial medial 
-###### nucleu parabrachial lateral 
+###### nucleu parabrahial medial 
+###### nucleu parabrahial lateral 
 ###### nucleu al rafeului pontin
 ###### nucleu salivar superior 
 ###### nucleu dorsal al lemniscului lateral 
 ###### nucleu ventral al lemniscului lateral 
-###### voal medular superior
+###### văl medular superior
 ###### corp trapezoid
 ###### decusație a nervului trohlear
 ###### fascicul uncinat pontin
@@ -508,69 +508,69 @@
 ###### fascicul dorsal longitudinal pontin
 ###### fascicul medial longitudinal pontin
 ###### tract tegmental central pontin
-###### stria acustică dorsală
-###### stria acustică intermediară
-###### stria acustică ventrală
-###### tract trigemen dorsal 
-###### fibre nervoase trigemene
+###### strie acustică dorsală
+###### strie acustică intermediară
+###### strie acustică ventrală
+###### tract trigeminal dorsal 
+###### fibre nervoase trigeminale
 ###### rădăcină motorie a nervului trigemen 
-###### lemniscus lateral 
-###### lemniscus medial pontin
+###### lemnisc lateral 
+###### lemnisc medial pontin
 ###### tract spinotalamic pontin
 ###### tract tectopontin
 ###### tract trigeminal ventral 
 ###### tract spinal trigeminal pontin
-###### tract vestibulocerebelar 
+###### tract vestibulocerebelos
 ###### peduncul cerebelos superior pontin
 ###### parte orală a nucleului trigeminal spinal 
 #### cerebel 
-##### nuclee cerebeloase
+##### nuclei cerebeloși
 ###### nucleu emboliform 
 ###### nucleu sferic 
 ###### nucleu fastigial 
-###### nucleu crestat 
+###### nucleu dințat
 ####### parte neodințată a nucleului dințat 
 ####### parte paleodințată a nucleului dințat
 ####### amiculum al nucleului dințat
-####### hilul nucleului dințat 
+####### hil al nucleului dințat 
 ##### substanţă albă cerebeloasă 
-###### arbor vitae
+###### arbore al vieții
 ###### corp medular al cerebelului 
-###### peduncul al flocculus 
+###### peduncul flocculus
 ###### lamină medulară superioară 
 ###### lamină medulară inferioară 
-###### membrană medulară inferioră 
+###### văl medular inferior
 ##### cortex cerebelos
 ###### lob anterior al cerebelului 
 ####### vermis al lobului anterior 
 ######## lingulă 
-######## lob central
+######## lobul central
 ######## culmen 
 ####### emisfera lobului anterior 
-######## lob patrulater anterior 
+######## lobul patrulater anterior 
 ######## lobul central alar 
 ###### lob posterior al cerebelului 
 ####### emisferă a lobului posterior 
-######## lob simplu 
-######## lob ansiform 
-######### lob semilunar superior
-######### lob semilunar inferior 
-######## lob gracil
-######## lob biventer
+######## lobul simplu
+######## lobul anseriform
+######### lobul semilunar superior
+######### lobul semilunar inferior 
+######## lobul gracil
+######## lobul biventer
 ######## amigdală cerebeloasă
 ######## paraflocculus 
-####### vermisul lobului posterior 
-######## declive 
+####### vermis al lobului posterior 
+######## decliv
 ######## folium 
-######## tuberculi 
+######## tuber
 ######## pyramis
 ######## uvula
 ###### lob flocculonodular 
 ####### flocculus 
 ####### nodulus 
-### bulb 
+### bulb
 #### tubercul cuneat
-#### nuclee vestibulare 
+#### nuclei vestibulari
 ##### nucleu vestibular superior
 ##### nucleu vestibular lateral 
 ##### nucleu vestibular medial 
@@ -592,9 +592,9 @@
 #### nucleu cuneat
 #### nucleu cuneat accesoriu
 #### nucleu pericuneat lateral 
-#### nucleu pericuneate medial 
+#### nucleu pericuneat medial 
 #### parte caudală a nucleului trigeminal spinal 
-#### zonă postrema 
+#### zonă postremă
 #### canal central medular
 #### nucleu pontobulbar 
 #### nucleu arcuat medular
@@ -610,7 +610,7 @@
 ##### tract solitar 
 ##### tract tectospinal medular 
 ##### lemnisc medial medular 
-##### decusație de lemniscus medial 
+##### decusație lemnisc medial 
 ##### fascicul cuneat medular 
 ##### fascicul gracil medular 
 ##### tract spinal trigeminal medular 
@@ -618,19 +618,19 @@
 ##### fibre nervoase ale nervului glosofaringian 
 ##### fibre nervoase vagale 
 ##### fibre arcuate interne 
-##### dorsal fibre arcuate externe 
-##### fibre ventrale arcuate externe 
+##### fibre arcuate externe dorsale
+##### fibre arcuate externe dorsale ventrale
 ##### fibre nervoase ale nervului hipoglos 
 ##### decusație piramidală
 ##### tract piramidal 
-##### tract cortico lateral medular 
-##### tract cortico anterior medular 
-##### tract cuneocerebelar 
-##### tract olivocerebelar 
+##### tract corticospinal lateral medular 
+##### tract corticospinal anterior medular 
+##### tract cuneocerebelos
+##### tract olivocerebelos
 ##### tracturi reticulospinale 
 ##### tract rubrospinal 
-##### tract dorsal spinocerebelar medular 
-##### tract spinocerebelar ventral 
+##### tract dorsal spinocerebelos medular 
+##### tract spinocerebelos ventral 
 ##### tracturi spino-olivare 
 ##### tract spinotalamic medular 
 ##### tract tectobulbar 
@@ -639,23 +639,23 @@
 #### parte interpolară a nucleului trigeminal spinal 
 #### complex olivar inferior 
 ##### nucleu olivar principal inferior 
-##### nucleu dorsal accesoriu olivar inferior 
-##### nucleu medial accesoriu olivar inferior 
+##### nucleu olivar inferior dorsal accesoriu 
+##### nucleu olivar inferior medial accesoriu
 ##### văl olivar inferior 
 ##### hil olivar inferior 
-#### nuclee ale rafeului bulbului 
+#### nuclei ai rafeului bulbului 
 ##### nucleu al rafeului Magnus 
-##### nucleu al rafeului obscurus 
-##### nucleu al rafeului pallidus 
+##### nucleu al rafeului obscur
+##### nucleu al rafeului palid
 #### nucleu solitar 
 ##### subnucleu dorsolateral al tractului solitar 
 ##### subnucleu dorsomedial al tractului solitar 
 ##### subnucleu medial al tractului solitar 
 ##### subnucleu parvicelular al tractului solitar 
 ##### subnucleu ventrolateral al tractului solitar 
-#### nuclee cohleare
+#### nuclei cohleari
 ##### nucleu cohlear dorsal 
-##### nuclee cohlear ventral 
+##### nuclei cohleari ventrali
 ###### nucleu cohlear anteroventral 
 ###### nucleu cohlear posteroventral 
 #### formațiune reticulată medulară
@@ -667,8 +667,8 @@
 ###### nucleu paragigantocelular lateral 
 ###### nucleu paragigantocelular dorsal 
 ###### nucleu reticular ventral 
-##### nuclee reticulare paramediană 
+##### nuclei reticulari paramediani
 ###### nucleu reticular paramedian dorsal
-###### nucleu accesor reticular paramedian
+###### nucleu reticular paramedian accesor
 ###### nucleu reticular paramedian ventral
 #### nucleu parasolitar

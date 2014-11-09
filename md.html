@@ -311,8 +311,22 @@ function addImage(href, title, text){
   }
 }
 
+function show_csv(levels1){
+  var csv = "";
+  for( loc in levels1){
+    //console.info(levels[loc].ln);
+    if (levels1[loc].parent) { 
+      csv = csv + "\n"+levels1[loc].ln+","+levels1[loc].parent.ln+",\'"+levels1[loc].node.replace(/'/g,"\'") +"\'";
+    } else {
+      csv = csv + "\n"+levels1[loc].ln+", NULL ,\'"+ levels1[loc].node.replace(/'/g,"\'") +"\'";
+    }
+  }
+  console.info(csv);
+}
+
 function getTree( lev, ndx){
-  console.info(levels)
+  //console.info(levels);
+  show_csv(levels);
   if (ndx === undefined) {
     var link = levels[0].node.toLowerCase().replace(/[^\w]+/g, '-') 
     onto.data = {text: levels[0].node, icon: levels[0].icon, data: [link, levels[0].ln], parent: null,  children: []} // 
